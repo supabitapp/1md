@@ -13,9 +13,14 @@ name = "1md"
 path = "src/main.rs"
 
 [dependencies]
+anyhow = "1"
 clock = { path = "vendor/zed/clock" }
+iroh = "1.5"
+iroh-tickets = "1"
+parking_lot = "0.12"
 rand = "0.9"
 text = { path = "vendor/zed/text" }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "sync", "time"] }
 rune = { git = "https://github.com/anomalyco/rune.git", rev = "9d4b4636f1f7e6d172053a0b6469a334c0bfc227" }
 
 [patch.crates-io]
