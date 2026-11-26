@@ -1,7 +1,7 @@
 /target
 *.png
 /ios/*.xcodeproj
-/ios/Template/Info.plist
+/ios/OneMD/Info.plist
 /ios/build
 /android/.gradle
 /android/build

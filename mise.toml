@@ -36,7 +36,7 @@ tools = { xcodegen = "2.48.0" }
 dir = "ios"
 run = [
   "xcodegen generate --quiet",
-  "xcodebuild -project Template.xcodeproj -scheme Template -destination 'generic/platform=iOS Simulator' -derivedDataPath build CODE_SIGNING_ALLOWED=NO -quiet build",
+  "xcodebuild -project OneMD.xcodeproj -scheme OneMD -destination 'generic/platform=iOS Simulator' -derivedDataPath build CODE_SIGNING_ALLOWED=NO -quiet build",
 ]
 
 [tasks.android]

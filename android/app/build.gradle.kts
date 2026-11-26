@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.desktoptemplate"
+    namespace = "com.example.onemd"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.desktoptemplate"
+        applicationId = "com.example.onemd"
         minSdk = 31
         targetSdk = 36
         versionCode = 1

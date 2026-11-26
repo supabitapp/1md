@@ -1,8 +1,12 @@
-# desktop-template
+# 1md
 
-The smallest cross-platform desktop app on [Rune](https://github.com/anomalyco/rune),
-a Rust GPU UI toolkit (wgpu + winit). One window, one line of text, on macOS,
-Windows, and Linux (X11 and Wayland). Its only dependency is `rune`.
+A cross-platform desktop app on [Rune](https://github.com/anomalyco/rune), a
+Rust GPU UI toolkit (wgpu + winit), for macOS, Windows, and Linux (X11 and
+Wayland), with native iOS and Android apps. Started from
+[desktop-template](https://github.com/supabitapp/desktop-template).
+
+Cargo package names can't start with a digit, so the crate, the Swift module
+and the Kotlin package are `onemd`; the binary and the app's name are `1md`.
 
 [mise](https://mise.jdx.dev) installs the pinned Rust toolchain and
 [mr boxington](https://mr-boxington.jdx.dev), a shared compile cache that
@@ -48,7 +52,7 @@ Rune runs on desktop only, so the phone apps are native, the same "Hello,
 world" in Rune's dark theme colors. Nothing is shared with the desktop app.
 
 - `ios/` is a SwiftUI app. [XcodeGen](https://github.com/yonaskolb/XcodeGen)
-  generates `Template.xcodeproj` from `project.yml`; edit `project.yml`, not
+  generates `OneMD.xcodeproj` from `project.yml`; edit `project.yml`, not
   the project. `mise run ios` installs XcodeGen and builds for the simulator
   without signing. Open the generated project in Xcode to run it.
 - `android/` is a Jetpack Compose app built with the Gradle wrapper.
@@ -56,5 +60,5 @@ world" in Rune's dark theme colors. Nothing is shared with the desktop app.
   Android SDK through `ANDROID_HOME` or `android/local.properties`
   (Android Studio writes it).
 
-Both use the placeholder ID `com.example.desktoptemplate`. CI builds each on
+Both use the placeholder ID `com.example.onemd`. CI builds each on
 every push and pull request.

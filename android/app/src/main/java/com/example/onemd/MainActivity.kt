@@ -1,4 +1,4 @@
-package com.example.desktoptemplate
+package com.example.onemd
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
