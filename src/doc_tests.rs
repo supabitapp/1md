@@ -1,11 +1,7 @@
-use std::time::Duration;
-
 use super::*;
 
 fn peer(id: u32) -> Document {
-    let mut doc = Document::new(ReplicaId::new(id));
-    doc.buffer.set_group_interval(Duration::ZERO);
-    doc
+    Document::ungrouped(ReplicaId::new(id))
 }
 
 fn seeded(text: &str) -> (Document, Document) {

@@ -30,6 +30,13 @@ impl Document {
         }
     }
 
+    #[cfg(test)]
+    pub(crate) fn ungrouped(replica: ReplicaId) -> Self {
+        let mut doc = Self::new(replica);
+        doc.buffer.set_group_interval(std::time::Duration::ZERO);
+        doc
+    }
+
     pub fn replica(&self) -> ReplicaId {
         self.buffer.replica_id()
     }
