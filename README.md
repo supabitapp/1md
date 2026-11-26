@@ -28,6 +28,21 @@ The document is a CRDT replica built on Zed's `text` crate, vendored under
 peers sync without a coordinator. `scripts/vendor-zed.py` regenerates it.
 Because those crates are GPL, so is 1md (GPL-3.0-or-later).
 
+## Sync
+
+Two or more people edit the same note live over
+[iroh](https://github.com/n0-computer/iroh): peer to peer, hole-punched where
+the network allows and relayed through n0's public relays where it doesn't.
+
+```sh
+cargo run -- --host            # share this note; prints a 1md --join command
+cargo run -- --join <ticket>   # edit it from another machine
+```
+
+Plain `1md` stays offline. The host relays everyone's edits, and anyone who
+holds the ticket can edit. The note lives in memory: when every window
+closes, it's gone.
+
 Rune isn't on crates.io; `Cargo.toml` pins one git rev of its `dev` branch.
 Cargo doesn't apply a dependency's `[patch.crates-io]`, so `Cargo.toml`
 repeats Rune's patched crates (winit, wgpu-hal, and others) at the same rev.

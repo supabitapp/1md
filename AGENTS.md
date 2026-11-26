@@ -8,7 +8,9 @@ and commands; this file covers the rules.
 
 - `src/` is the desktop app, Rust on Rune. It is the only code shared across
   macOS, Windows and Linux. `src/lib.rs` is the core and never imports Rune:
-  `doc` is the document, one CRDT replica. `src/main.rs` is the Rune app.
+  `doc` is the document (one CRDT replica), `splice` infers a field's edit,
+  `wire` encodes sync frames, `session` tracks peers and relays operations,
+  and `net` carries frames over iroh. `src/main.rs` is the Rune app.
 - `vendor/zed/` is Zed's text CRDT (`text`, `rope`, `sum_tree`, `clock` and
   their helpers). `scripts/vendor-zed.py` regenerates it from the commit in
   `vendor/zed/REVISION` and applies `vendor/zed/patches/`. Never edit it by
