@@ -5,11 +5,17 @@ edition = "2024"
 license = "GPL-3.0-or-later"
 publish = false
 
+[lib]
+path = "src/lib.rs"
+
 [[bin]]
 name = "1md"
 path = "src/main.rs"
 
 [dependencies]
+clock = { path = "vendor/zed/clock" }
+rand = "0.9"
+text = { path = "vendor/zed/text" }
 rune = { git = "https://github.com/anomalyco/rune.git", rev = "9d4b4636f1f7e6d172053a0b6469a334c0bfc227" }
 
 [patch.crates-io]
