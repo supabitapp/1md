@@ -7,7 +7,15 @@ and commands; this file covers the rules.
 ## Layout
 
 - `src/` is the desktop app, Rust on Rune. It is the only code shared across
-  macOS, Windows and Linux.
+  macOS, Windows and Linux. `src/lib.rs` is the core and never imports Rune:
+  `doc` is the document, one CRDT replica. `src/main.rs` is the Rune app.
+- `vendor/zed/` is Zed's text CRDT (`text`, `rope`, `sum_tree`, `clock` and
+  their helpers). `scripts/vendor-zed.py` regenerates it from the commit in
+  `vendor/zed/REVISION` and applies `vendor/zed/patches/`. Never edit it by
+  hand: change a patch and rerun the script. To bump Zed, run
+  `scripts/vendor-zed.py --rev <full sha>`, then `mise run ci`.
+- 1md is GPL-3.0-or-later because it links Zed's GPL `text`, `rope` and
+  `clock`.
 - `ios/` is a SwiftUI app. XcodeGen generates the Xcode project from
   `ios/project.yml`; edit that file, never the generated `.xcodeproj` or
   `Info.plist`.
@@ -83,7 +91,7 @@ and commands; this file covers the rules.
 ## Code shape
 
 - Keep source files under 800 lines, not counting tests. 1,500 is a hard cap.
-  Split by capability.
+  Split by capability. `vendor/` is exempt.
 - No speculative seams. Add a trait, platform abstraction or plugin point only
   when there are two real implementations or a current test needs the
   substitution. Per-platform modules stay concrete.

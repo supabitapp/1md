@@ -23,6 +23,11 @@ mise run ios          # build the iOS app for the simulator
 mise run android      # build the Android debug APK
 ```
 
+The document is a CRDT replica built on Zed's `text` crate, vendored under
+`vendor/zed/` with a patch that lets each launch pick a random replica ID, so
+peers sync without a coordinator. `scripts/vendor-zed.py` regenerates it.
+Because those crates are GPL, so is 1md (GPL-3.0-or-later).
+
 Rune isn't on crates.io; `Cargo.toml` pins one git rev of its `dev` branch.
 Cargo doesn't apply a dependency's `[patch.crates-io]`, so `Cargo.toml`
 repeats Rune's patched crates (winit, wgpu-hal, and others) at the same rev.
