@@ -22,7 +22,7 @@ and commands; this file covers the rules.
 ## Checks
 
 - Run `mise run ci` before every push: rustfmt check, clippy with
-  `-D warnings`, and the release build. Run `mise run ios` or
+  `-D warnings`, the tests, and the release build. Run `mise run ios` or
   `mise run android` when you touch those directories. CI runs all of them.
 - Read build and lint output whole. Filtering it through `grep` or `head`
   hides the failure you are looking for.

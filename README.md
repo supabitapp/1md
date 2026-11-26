@@ -17,6 +17,7 @@ mise install          # Rust 1.99.1 with clippy and rustfmt, plus mbx
 mise run dev          # open the window
 mise run snap         # render headless to hello.png
 mise run lint         # rustfmt check and clippy with -D warnings
+mise run test         # run the tests
 mise run ci           # everything CI runs
 mise run ios          # build the iOS app for the simulator
 mise run android      # build the Android debug APK

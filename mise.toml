@@ -22,13 +22,17 @@ run = [
   "cargo clippy --locked --all-targets -- -D warnings",
 ]
 
+[tasks.test]
+description = "Run the tests"
+run = "cargo test --locked"
+
 [tasks.build]
 description = "Build the release executable"
 run = "cargo build --locked --release"
 
 [tasks.ci]
 description = "Everything CI runs"
-depends = ["lint", "build"]
+depends = ["lint", "test", "build"]
 
 [tasks.ios]
 description = "Build the iOS app for the simulator"
