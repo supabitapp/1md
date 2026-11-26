@@ -2,7 +2,7 @@ use std::num::NonZeroU64;
 use std::ops::Range;
 
 pub use clock::{Global, ReplicaId};
-pub use text::Operation;
+pub use text::{Anchor, Operation};
 
 use text::{Buffer, BufferId};
 
@@ -71,6 +71,16 @@ impl Document {
     /// whose causes haven't arrived wait until they do.
     pub fn apply(&mut self, ops: impl IntoIterator<Item = Operation>) {
         self.buffer.apply_ops(ops);
+    }
+
+    /// A position that follows its text through every later edit, local or remote. Text
+    /// inserted exactly here lands after it.
+    pub fn anchor(&self, offset: usize) -> Anchor {
+        self.buffer.anchor_before(offset.min(self.buffer.len()))
+    }
+
+    pub fn offset(&self, anchor: &Anchor) -> usize {
+        self.buffer.summary_for_anchor(anchor)
     }
 
     pub fn version(&self) -> Global {

@@ -112,6 +112,25 @@ fn a_late_peer_catches_up_from_ops_since_and_duplicates_are_harmless() {
 }
 
 #[test]
+fn anchors_follow_their_text_through_remote_edits() {
+    let (mut a, mut b) = seeded("one two");
+    let caret = a.anchor(4);
+    b.edit(0..0, "zero ").unwrap();
+    b.edit(9..9, "and ").unwrap();
+    exchange(&mut a, &mut b);
+    assert_eq!(a.text(), "zero one and two");
+    assert_eq!(a.offset(&caret), 9);
+    let at_caret = a.anchor(9);
+    b.edit(9..9, "X").unwrap();
+    exchange(&mut a, &mut b);
+    assert_eq!(
+        a.offset(&at_caret),
+        9,
+        "text typed at the anchor lands after it"
+    );
+}
+
+#[test]
 fn random_replica_ids_avoid_reserved_values() {
     for _ in 0..1000 {
         let id = random_replica_id().as_u32();

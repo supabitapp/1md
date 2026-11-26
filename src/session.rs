@@ -34,6 +34,10 @@ impl Session {
         &self.doc
     }
 
+    pub fn peer_count(&self) -> usize {
+        self.peers.len()
+    }
+
     pub fn edit(&mut self, range: Range<usize>, text: &str) -> Result<Outbox, InvalidRange> {
         let op = self.doc.edit(range, text)?;
         Ok(self.local(op))
